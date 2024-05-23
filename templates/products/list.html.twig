@@ -1,0 +1,41 @@
+{# templates/product/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Products List</h1>
+
+    <form action="{{ path('products_list') }}" method="GET">
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="">All</option>
+            {% for category in categories %}
+                <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th><a href="{{ path('products_list', {'sort': 'title', 'direction': 'asc'}) }}">Title</a></th>
+                <th><a href="{{ path('products_list', {'sort': 'description', 'direction': 'asc'}) }}">Description</a></th>
+                <th><a href="{{ path('products_list', {'sort': 'weight', 'direction': 'asc'}) }}">Weight</a></th>
+                <th><a href="{{ path('products_list', {'sort': 'category', 'direction': 'asc'}) }}">Category</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in pagination %}
+                <tr>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.weight }}</td>
+                    <td>{{ product.category }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

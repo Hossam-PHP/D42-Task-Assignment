@@ -1,0 +1,5 @@
+{# templates/product/report.csv.twig #}
+
+{% for product in products %}
+    "{{ product.title }}","{{ product.description }}","{{ product.weight }}","{{ product.category }}"
+{% endfor %}

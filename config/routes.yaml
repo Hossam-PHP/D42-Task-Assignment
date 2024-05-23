@@ -1,0 +1,17 @@
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+products_list:
+  path: /products
+  controller: App\Controller\ProductController::list
+  methods: GET
+product_import:
+  path: /import
+  controller: App\Controller\ProductController::import
+  methods: POST
+generate_report:
+  path: /generate-report
+  controller: App\Controller\ProductController::generateReport
+  methods: GET

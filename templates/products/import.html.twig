@@ -1,0 +1,25 @@
+{# templates/product/import.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Import Products</h1>
+
+    {% if app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ app.flashes('success')[0] }}
+        </div>
+    {% endif %}
+
+    {% if app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ app.flashes('error')[0] }}
+        </div>
+    {% endif %}
+
+    <form action="{{ path('import_products') }}" method="POST" enctype="multipart/form-data">
+        <label for="xml_file">XML File:</label>
+        <input type="file" id="xml_file" name="xml_file">
+        <button type="submit">Import</button>
+    </form>
+{% endblock %}
